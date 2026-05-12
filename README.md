@@ -1,8 +1,9 @@
 # Student Record Management System (SRMS)
 
 ## Project Description
-This project is a Student Record Management System developed using Java.
-The system helps manage student records including adding, viewing, deleting, and generating reports.
+The Student Record Management System (SRMS) is a Java-based application designed to efficiently manage and organize student information within an academic environment.  
+The system allows users to perform essential operations such as adding, viewing, updating, and deleting student records, while also generating academic reports based on GPA, department, and academic year.  
+This project was developed to demonstrate the practical implementation of Object-Oriented Programming (OOP) concepts, file handling, exception handling, and multithreading techniques in Java. Additionally, GitHub was used to support collaborative development and version control among team members.
 
 ## Features
 - Add students
