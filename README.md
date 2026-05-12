@@ -29,9 +29,9 @@ This project was developed to demonstrate the practical implementation of Object
 
 ## Team Members
 - Member 1: Classes & OOP
-- Member 2: File Management
-- Member 3: Reports & Multithreading
-- Member 4: UI & Documentation
+- Member 2 Samia Alharbi 443213161 : File Management
+- Member 3 Ahad Almutairi 431201342 : Reports & Multithreading
+- Member 4 Sarah Almutrafi 432216258 : UI & Documentation
 
 ## How to Run
 1. Open the project in NetBeans.
