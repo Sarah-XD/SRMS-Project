@@ -9,7 +9,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        FileManager fileManagement = new FileManagement();
+        FileManagement fileManagement = new FileManagement();
 
         List<Student> students = new ArrayList<>();
 
