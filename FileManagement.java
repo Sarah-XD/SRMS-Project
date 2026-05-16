@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.*;
 import model.Student;
 
-public class FileManager {
+public class FileManagement {
 
     private static final String FILE_NAME = "students.txt";
 
