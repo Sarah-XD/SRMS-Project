@@ -2,14 +2,14 @@ package main;
 
 import java.util.ArrayList;
 import java.util.List;
-import file.FileManager;
+import file.FileManagement;
 import model.Student;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        FileManager fileManager = new FileManager();
+        FileManager fileManagement = new FileManagement();
 
         List<Student> students = new ArrayList<>();
 
@@ -17,9 +17,9 @@ public class Main {
         students.add(new Student("Sara", 2, 21, "CS", 4.8, 3));
         students.add(new Student("Omar", 3, 22, "SE", 4.2, 4));
 
-        fileManager.saveStudents(students);
+        fileManagement.saveStudents(students);
 
-        List<Student> loaded = fileManager.loadStudents();
+        List<Student> loaded = fileManagement.loadStudents();
 
         System.out.println("---- Students ----");
 
