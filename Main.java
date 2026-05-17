@@ -2,8 +2,12 @@ package main;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import file.FileManagement;
 import model.Student;
+import reports.ReportManager;
+import threads.AutoSaveThread;
+import threads.ReportThread;
 
 public class Main {
 
@@ -17,13 +21,16 @@ public class Main {
         students.add(new Student("Sara", 2, 21, "CS", 4.8, 3));
         students.add(new Student("Omar", 3, 22, "SE", 4.2, 4));
 
+        // Save
         fileManagement.saveStudents(students);
 
+        // Load
         List<Student> loaded = fileManagement.loadStudents();
 
         System.out.println("---- Students ----");
 
         for (Student s : loaded) {
+
             System.out.println(
                     "Name: " + s.getName()
                     + " | ID: " + s.getId()
@@ -31,24 +38,23 @@ public class Main {
                     + " | GPA: " + s.getGpa()
             );
         }
-    }
-}
-ReportManager reportManager = new ReportManager((ArrayList<Student>) loaded);
 
-        // Generate reports
+        // Reports
+        ReportManager reportManager =
+                new ReportManager((ArrayList<Student>) loaded);
+
         reportManager.generateGPAReport();
 
         reportManager.generateDepartmentReport("CS");
 
         reportManager.generateYearReport(3);
 
-        // Auto Save Thread
+        // Threads
         AutoSaveThread autoSaveThread =
                 new AutoSaveThread(fileManagement);
 
         autoSaveThread.start();
 
-        // Report Thread
         ReportThread reportThread =
                 new ReportThread(reportManager);
 
