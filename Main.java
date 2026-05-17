@@ -1,7 +1,9 @@
 package main;
 
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import file.FileManagement;
 import model.Student;
@@ -13,6 +15,8 @@ public class Main {
 
     public static void main(String[] args) {
 
+        Scanner input = new Scanner(System.in);
+
         FileManagement fileManagement = new FileManagement();
 
         List<Student> students = new ArrayList<>();
@@ -21,43 +25,119 @@ public class Main {
         students.add(new Student("Sara", 2, 21, "CS", 4.8, 3));
         students.add(new Student("Omar", 3, 22, "SE", 4.2, 4));
 
-        // Save
-        fileManagement.saveStudents(students);
-
-        // Load
-        List<Student> loaded = fileManagement.loadStudents();
-
-        System.out.println("---- Students ----");
-
-        for (Student s : loaded) {
-
-            System.out.println(
-                    "Name: " + s.getName()
-                    + " | ID: " + s.getId()
-                    + " | Dept: " + s.getDepartment()
-                    + " | GPA: " + s.getGpa()
-            );
-        }
-
-        // Reports
         ReportManager reportManager =
-                new ReportManager((ArrayList<Student>) loaded);
+                new ReportManager((ArrayList<Student>) students);
 
-        reportManager.generateGPAReport();
+        int choice;
 
-        reportManager.generateDepartmentReport("CS");
+        do {
 
-        reportManager.generateYearReport(3);
+            System.out.println("\n===== SRMS MENU =====");
+            System.out.println("1. View Students");
+            System.out.println("2. GPA Report");
+            System.out.println("3. Department Report");
+            System.out.println("4. Year Report");
+            System.out.println("5. Save Students");
+            System.out.println("6. Load Students");
+            System.out.println("7. Run Threads");
+            System.out.println("8. Exit");
+            System.out.print("Enter your choice: ");
 
-        // Threads
-        AutoSaveThread autoSaveThread =
-                new AutoSaveThread(fileManagement);
+            choice = input.nextInt();
 
-        autoSaveThread.start();
+            switch (choice) {
 
-        ReportThread reportThread =
-                new ReportThread(reportManager);
+                case 1:
 
-        reportThread.start();
+                    System.out.println("\n---------------------------------------------------");
+                    System.out.printf("%-5s %-10s %-15s %-5s\n",
+                        "ID", "Name", "Department", "GPA");
+                    System.out.println("---------------------------------------------------");
+
+                   for (Student s : students) {
+
+                    System.out.printf("%-5d %-10s %-15s %-5.2f\n",
+                        s.getId(),
+                        s.getName(),
+                        s.getDepartment(),
+                        s.getGpa());
+}
+
+                    System.out.println("---------------------------------------------------");
+
+                    break;
+
+                case 2:
+
+                    reportManager.generateGPAReport();
+
+                    break;
+
+                case 3:
+
+                    input.nextLine();
+
+                    System.out.print("Enter Department: ");
+                    String dept = input.nextLine();
+
+                    reportManager.generateDepartmentReport(dept);
+
+                    break;
+
+                case 4:
+
+                    System.out.println("\n===== YEAR REPORT =====");
+                    System.out.println("Choose Academic Year:");
+                    System.out.println("2 - Second Year");
+                    System.out.println("3 - Third Year");
+                    System.out.println("4 - Fourth Year");
+
+                    System.out.print("Enter Year: ");
+                    int year = input.nextInt();
+
+                    reportManager.generateYearReport(year);
+
+                    break;
+
+                case 5:
+
+                    fileManagement.saveStudents(students);
+
+                    break;
+
+                case 6:
+
+                    students = fileManagement.loadStudents();
+
+                    break;
+
+                case 7:
+
+                    AutoSaveThread autoSaveThread =
+                            new AutoSaveThread(fileManagement);
+
+                    ReportThread reportThread =
+                            new ReportThread(reportManager);
+
+                    autoSaveThread.start();
+                    reportThread.start();
+
+                    break;
+
+                case 8:
+
+                    System.out.println("Exiting System...");
+
+                    break;
+
+                default:
+
+                    System.out.println("Invalid Choice!");
+
+            }
+
+        } while (choice != 8);
+
+        input.close();
     }
 }
