@@ -1,28 +1,27 @@
+package threads;
+
+import file.FileManagement;
+
 public class AutoSaveThread extends Thread {
 
-    private FileManager fileManager;
+    private FileManagement fileManagement;
 
-    public AutoSaveThread(FileManager fileManager) {
-        this.fileManager = fileManager;
+    public AutoSaveThread(FileManagement fileManagement) {
+        this.fileManagement = fileManagement;
     }
 
     @Override
     public void run() {
 
-        while (true) {
+        try {
 
-            try {
+            System.out.println("\n[Thread] Auto Saving...");
 
-                System.out.println("\n[AutoSave] Saving data...");
+            Thread.sleep(3000);
 
-                fileManager.saveStudents();
+        } catch (InterruptedException e) {
 
-                Thread.sleep(10000);
-
-            } catch (Exception e) {
-
-                System.out.println("AutoSave Error: " + e.getMessage());
-            }
+            System.out.println(e.getMessage());
         }
     }
 }
