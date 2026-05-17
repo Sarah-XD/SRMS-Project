@@ -1,3 +1,7 @@
+package threads;
+
+import reports.ReportManager;
+
 public class ReportThread extends Thread {
 
     private ReportManager reportManager;
