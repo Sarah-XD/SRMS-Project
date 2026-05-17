@@ -44,5 +44,5 @@ This project was developed to demonstrate the practical implementation of Object
 - Improve security
 
 ## UML Diagram
-![UML Diagram](<img width="791" height="714" alt="SRMS drawio" src="https://github.com/user-attachments/assets/f4e59946-1a3b-491d-af46-18541cf9a610" />
-)
+
+![UML Diagram](SRMS.drawio.png)
