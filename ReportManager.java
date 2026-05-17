@@ -1,4 +1,7 @@
+package reports;
+
 import java.util.ArrayList;
+import model.Student;
 
 public class ReportManager {
 
@@ -16,8 +19,9 @@ public class ReportManager {
         for (Student s : students) {
 
             System.out.println(
-                    "Name: " + s.getName() +
-                    " | GPA: " + s.getGpa());
+                    "Name: " + s.getName()
+                    + " | GPA: " + s.getGpa()
+            );
         }
     }
 
@@ -31,9 +35,9 @@ public class ReportManager {
             if (s.getDepartment().equalsIgnoreCase(department)) {
 
                 System.out.println(
-                        "ID: " + s.getId() +
-                        " | Name: " + s.getName() +
-                        " | Department: " + s.getDepartment());
+                        "Name: " + s.getName()
+                        + " | Department: " + s.getDepartment()
+                );
             }
         }
     }
@@ -48,8 +52,9 @@ public class ReportManager {
             if (s.getYear() == year) {
 
                 System.out.println(
-                        "Name: " + s.getName() +
-                        " | Year: " + s.getYear());
+                        "Name: " + s.getName()
+                        + " | Year: " + s.getYear()
+                );
             }
         }
     }
