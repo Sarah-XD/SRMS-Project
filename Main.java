@@ -33,3 +33,25 @@ public class Main {
         }
     }
 }
+ReportManager reportManager = new ReportManager((ArrayList<Student>) loaded);
+
+        // Generate reports
+        reportManager.generateGPAReport();
+
+        reportManager.generateDepartmentReport("CS");
+
+        reportManager.generateYearReport(3);
+
+        // Auto Save Thread
+        AutoSaveThread autoSaveThread =
+                new AutoSaveThread(fileManagement);
+
+        autoSaveThread.start();
+
+        // Report Thread
+        ReportThread reportThread =
+                new ReportThread(reportManager);
+
+        reportThread.start();
+    }
+}
